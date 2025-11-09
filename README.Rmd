@@ -1,0 +1,48 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# missingtool
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+The goal of missingtool is to provide a simple way to count missing values across all columns for each level of a grouping variable. It's a convenient wrapper around dplyr's `group_by()` and `summarize()` functions.
+
+## Installation
+
+You can install the development version of missingtool from [GitHub](https://github.com/) with:
+``` r
+# install.packages("devtools")
+devtools::install_github("stat545ubc-2025/assignment-b2-juntaic7", ref = "0.1.0")
+```
+
+## Example
+
+Here's a basic example using the built-in `airquality` dataset:
+
+```{r example}
+library(missingtool)
+
+# Count missing values by Month
+count_all_missing_by_group(airquality, Month)
+
+# Using pipe operator
+airquality |> count_all_missing_by_group(Month)
+
+# Keep the output grouped
+count_all_missing_by_group(airquality, Month, .groups = "keep")
+```
+
+
